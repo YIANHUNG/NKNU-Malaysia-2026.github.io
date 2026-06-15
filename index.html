@@ -29,7 +29,6 @@ body {
   padding: 0;
 }
 
-/* ── 頁首 ── */
 .page-header {
   position: relative;
   overflow: hidden;
@@ -37,7 +36,6 @@ body {
   background: var(--cream);
   border-bottom: 1px solid var(--border);
 }
-
 .header-eyebrow {
   font-size: 12px;
   letter-spacing: 0.15em;
@@ -45,7 +43,6 @@ body {
   font-weight: 500;
   margin-bottom: 0.4rem;
 }
-
 .header-title {
   font-size: 28px;
   font-weight: 700;
@@ -54,13 +51,11 @@ body {
   line-height: 1.2;
   margin-bottom: 0.3rem;
 }
-
 .header-sub {
   font-size: 14px;
   color: var(--text-mid);
   letter-spacing: 0.05em;
 }
-
 .header-deco {
   position: absolute;
   right: 0; bottom: 0;
@@ -68,7 +63,6 @@ body {
   pointer-events: none;
   opacity: 0.18;
 }
-
 .header-accent {
   position: absolute;
   bottom: 0; left: 0; right: 0;
@@ -76,7 +70,6 @@ body {
   background: linear-gradient(90deg, var(--orange) 0%, var(--orange-light) 60%, transparent 100%);
 }
 
-/* ── 進度條 ── */
 .progress-section {
   padding: 1.1rem 2rem;
   background: var(--cream-dark);
@@ -85,14 +78,12 @@ body {
   gap: 14px;
   border-bottom: 1px solid var(--border);
 }
-
 .prog-text {
   font-size: 12px;
   color: var(--text-mid);
   white-space: nowrap;
   min-width: 80px;
 }
-
 .bar-bg {
   flex: 1;
   height: 4px;
@@ -100,7 +91,6 @@ body {
   border-radius: 99px;
   overflow: hidden;
 }
-
 .bar-fill {
   height: 100%;
   background: linear-gradient(90deg, var(--orange), var(--orange-light));
@@ -108,7 +98,6 @@ body {
   transition: width 0.3s ease;
   width: 0%;
 }
-
 .reset-btn {
   font-size: 11px;
   color: var(--text-light);
@@ -150,7 +139,6 @@ body {
 }
 .confirm-no:hover { background: var(--cream); }
 
-/* ── 小叮嚀 ── */
 .tips-section {
   margin: 1.5rem 1.5rem 0;
   background: var(--orange-pale);
@@ -158,7 +146,6 @@ body {
   border-radius: 0 8px 8px 0;
   padding: 1rem 1.25rem;
 }
-
 .tips-title {
   font-size: 12px;
   font-weight: 700;
@@ -169,13 +156,11 @@ body {
   align-items: center;
   gap: 6px;
 }
-
 .tips-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4px 1.5rem;
 }
-
 .tip-item {
   font-size: 12px;
   color: var(--text-mid);
@@ -184,7 +169,6 @@ body {
   align-items: baseline;
   gap: 6px;
 }
-
 .tip-item::before {
   content: '•';
   color: var(--orange-light);
@@ -193,10 +177,7 @@ body {
   line-height: 1.4;
 }
 
-/* ── 清單主體 ── */
-.checklist-body {
-  padding: 1.25rem 1.5rem 3rem;
-}
+.checklist-body { padding: 1.25rem 1.5rem 3rem; }
 
 .section {
   margin-bottom: 1.25rem;
@@ -205,7 +186,6 @@ body {
   border: 1px solid var(--border);
   background: #fff;
 }
-
 .section-header {
   display: flex;
   align-items: center;
@@ -214,7 +194,6 @@ body {
   background: var(--cream-dark);
   border-bottom: 1px solid var(--border);
 }
-
 .section-title {
   font-size: 11px;
   font-weight: 700;
@@ -222,16 +201,9 @@ body {
   color: var(--text-mid);
   text-transform: uppercase;
 }
+.section-count { font-size: 11px; color: var(--text-light); }
 
-.section-count {
-  font-size: 11px;
-  color: var(--text-light);
-}
-
-.items {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-}
+.items { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
 
 .item {
   display: flex;
@@ -245,10 +217,8 @@ body {
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
-
 .item:hover { background: #fdf9f5; }
 .item:active { background: var(--cream); }
-
 .item.checked { opacity: 0.4; }
 .item.checked .item-label { text-decoration: line-through; }
 
@@ -261,12 +231,10 @@ body {
   transition: background 0.15s, border-color 0.15s;
   background: #fff;
 }
-
 .item.checked .checkbox {
   background: var(--orange);
   border-color: var(--orange);
 }
-
 .item.checked .checkbox::after {
   content: '';
   display: block;
@@ -275,14 +243,53 @@ body {
   border-top: none; border-left: none;
   transform: rotate(42deg) translateY(-1px);
 }
+.item-label { font-size: 13px; color: var(--text-dark); line-height: 1.4; }
 
-.item-label {
-  font-size: 13px;
-  color: var(--text-dark);
-  line-height: 1.4;
+/* 刪除按鈕（自訂項目用） */
+.item .del-btn {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-size: 15px;
+  color: var(--text-light);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 2px;
+  line-height: 1;
+  display: block;
 }
+.item .del-btn:hover { color: var(--orange); }
 
-/* ── 頁尾 ── */
+/* 新增列 */
+.add-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-top: 1px solid #f5efe8;
+}
+.add-input {
+  flex: 1;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--text-dark);
+  background: none;
+  border: none;
+  outline: none;
+  padding: 4px 0;
+}
+.add-input::placeholder { color: var(--text-light); }
+.add-submit {
+  font-size: 18px;
+  color: var(--text-light);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+}
+.add-submit:hover { color: var(--orange); }
+
 footer {
   text-align: center;
   font-size: 11px;
@@ -349,34 +356,54 @@ footer {
 <footer>國立高雄師範大學</footer>
 
 <script>
-const data = [
+const DEFAULT_DATA = [
   { cat: "證件與文件", items: ["護照","護照影本","電子機票","旅遊保險證明","活動手冊","大頭照","健保卡"] },
   { cat: "教學用品", items: ["教案紙本備份","試教教材","教具","白板筆","板擦","磁鐵","膠帶","紅筆、黑筆、鉛筆","貼紙","計時器","A4 空白紙","學習單備份"] },
   { cat: "電子設備與配件", items: ["筆電","充電器","手機","充電線","行動電源","轉接頭","網卡","隨身碟","耳機","延長線","相機或手機腳架"] },
-  { cat: "生活日用品", items: ["換洗衣物","毛巾","鞋子","拖鞋","涼鞋","輕便外套","雨傘或輕便雨衣","盥洗用品","美妝用品","保養品","個人藥品","防蚊液","防曬乳","台灣零食伴手禮","少量馬幣現金","環保袋"] },
+  { cat: "生活日用品", items: ["換洗衣物","毛巾","鞋子","拖鞋","涼鞋","輕便外套","雨傘或輕便雨衣","盥洗用品","美妝用品","保養品","個人藥品","防蚊液","防曬乳","台灣零食伴手禮","少量馬幣現金","環保袋","感謝卡"] },
   { cat: "其他", items: ["備用眼鏡","隱形眼鏡","夾鏈袋","安全鎖","名片"] }
 ];
 
-const STORAGE_KEY = 'nknu_kl_checklist_v1';
-const total = data.reduce((s, g) => s + g.items.length, 0);
-let state = {};
+const STORAGE_KEY = 'nknu_kl_checklist_v2';
+let state = { checked: {}, custom: {} };
 
 function load() {
-  try { const s = localStorage.getItem(STORAGE_KEY); if (s) state = JSON.parse(s); } catch(e) {}
+  try {
+    const s = localStorage.getItem(STORAGE_KEY);
+    if (s) state = JSON.parse(s);
+    DEFAULT_DATA.forEach(({ cat }) => {
+      if (!state.custom[cat]) state.custom[cat] = [];
+    });
+  } catch(e) {
+    DEFAULT_DATA.forEach(({ cat }) => { state.custom[cat] = []; });
+  }
 }
+
 function save() {
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
 }
+
+function totalCount() {
+  let n = DEFAULT_DATA.reduce((s, g) => s + g.items.length, 0);
+  DEFAULT_DATA.forEach(({ cat }) => { n += (state.custom[cat] || []).length; });
+  return n;
+}
+
 function updateProgress() {
-  const checked = Object.values(state).filter(Boolean).length;
-  document.getElementById('prog-label').textContent = `${checked} / ${total} 已確認`;
-  document.getElementById('bar').style.width = (checked / total * 100) + '%';
-  data.forEach(({ cat, items }) => {
-    const done = items.filter(i => state[i]).length;
+  const n = totalCount();
+  const checked = Object.values(state.checked).filter(Boolean).length;
+  document.getElementById('prog-label').textContent = `${checked} / ${n} 已確認`;
+  document.getElementById('bar').style.width = (n ? checked / n * 100 : 0) + '%';
+
+  DEFAULT_DATA.forEach(({ cat, items }) => {
+    const customItems = state.custom[cat] || [];
+    const allItems = [...items, ...customItems];
+    const done = allItems.filter(i => state.checked[cat + '::' + i]).length;
     const el = document.getElementById('count-' + cat);
-    if (el) el.textContent = `${done} / ${items.length}`;
+    if (el) el.textContent = `${done} / ${allItems.length}`;
   });
 }
+
 function showConfirm() {
   document.getElementById('reset-btn').style.display = 'none';
   document.getElementById('reset-confirm').classList.add('show');
@@ -386,15 +413,61 @@ function hideConfirm() {
   document.getElementById('reset-confirm').classList.remove('show');
 }
 function doReset() {
-  state = {}; save(); updateProgress();
+  state.checked = {};
+  save();
   document.querySelectorAll('.item').forEach(el => el.classList.remove('checked'));
+  updateProgress();
   hideConfirm();
+}
+
+function makeItemRow(cat, item, isCustom) {
+  const key = cat + '::' + item;
+  const row = document.createElement('div');
+  row.className = 'item' + (state.checked[key] ? ' checked' : '');
+  row.dataset.key = key;
+
+  const box = document.createElement('div');
+  box.className = 'checkbox';
+
+  const label = document.createElement('span');
+  label.className = 'item-label';
+  label.textContent = item;
+
+  row.appendChild(box);
+  row.appendChild(label);
+
+  if (isCustom) {
+    const del = document.createElement('button');
+    del.className = 'del-btn';
+    del.textContent = '×';
+    del.title = '刪除此項目';
+    del.addEventListener('click', (e) => {
+      e.stopPropagation();
+      state.custom[cat] = state.custom[cat].filter(i => i !== item);
+      delete state.checked[key];
+      save();
+      row.remove();
+      updateProgress();
+    });
+    row.appendChild(del);
+  }
+
+  row.addEventListener('click', () => {
+    state.checked[key] = !state.checked[key];
+    row.classList.toggle('checked', state.checked[key]);
+    save();
+    updateProgress();
+  });
+
+  return row;
 }
 
 load();
 const container = document.getElementById('checklist');
 
-data.forEach(({ cat, items }) => {
+DEFAULT_DATA.forEach(({ cat, items }) => {
+  if (!state.custom[cat]) state.custom[cat] = [];
+
   const sec = document.createElement('div');
   sec.className = 'section';
 
@@ -405,22 +478,53 @@ data.forEach(({ cat, items }) => {
 
   const grid = document.createElement('div');
   grid.className = 'items';
+  grid.id = 'grid-' + cat;
 
   items.forEach(item => {
-    if (!(item in state)) state[item] = false;
-    const row = document.createElement('div');
-    row.className = 'item' + (state[item] ? ' checked' : '');
-    row.innerHTML = `<div class="checkbox"></div><span class="item-label">${item}</span>`;
-    row.addEventListener('click', () => {
-      state[item] = !state[item];
-      row.classList.toggle('checked', state[item]);
-      save();
-      updateProgress();
-    });
-    grid.appendChild(row);
+    grid.appendChild(makeItemRow(cat, item, false));
+  });
+
+  (state.custom[cat] || []).forEach(item => {
+    grid.appendChild(makeItemRow(cat, item, true));
   });
 
   sec.appendChild(grid);
+
+  // 新增列
+  const addRow = document.createElement('div');
+  addRow.className = 'add-row';
+  const input = document.createElement('input');
+  input.className = 'add-input';
+  input.type = 'text';
+  input.placeholder = '＋ 新增項目，按 Enter 確認';
+  input.maxLength = 30;
+
+  const addBtn = document.createElement('button');
+  addBtn.className = 'add-submit';
+  addBtn.textContent = '＋';
+  addBtn.title = '新增';
+
+  function addItem() {
+    const val = input.value.trim();
+    if (!val) return;
+    if (state.custom[cat].includes(val) || items.includes(val)) {
+      input.value = '';
+      return;
+    }
+    state.custom[cat].push(val);
+    save();
+    grid.appendChild(makeItemRow(cat, val, true));
+    input.value = '';
+    updateProgress();
+  }
+
+  input.addEventListener('keydown', (e) => { if (e.key === 'Enter') addItem(); });
+  addBtn.addEventListener('click', addItem);
+
+  addRow.appendChild(input);
+  addRow.appendChild(addBtn);
+  sec.appendChild(addRow);
+
   container.appendChild(sec);
 });
 
