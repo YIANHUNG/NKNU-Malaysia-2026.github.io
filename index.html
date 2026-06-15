@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>攜帶物品清單｜115學年度國外教育見習</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream: #F5EFE6;
+  --cream-dark: #EDE5D8;
+  --orange: #D45E1A;
+  --orange-light: #E8845A;
+  --orange-pale: #F7E0D2;
+  --text-dark: #3A3028;
+  --text-mid: #7A6858;
+  --text-light: #A89880;
+  --border: #DDD3C5;
+}
+
+body {
+  font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  min-height: 100vh;
+  padding: 0;
+}
+
+/* ── 頁首 ── */
+.page-header {
+  position: relative;
+  overflow: hidden;
+  padding: 2.5rem 2rem 2rem;
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: var(--orange);
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+.header-title {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-dark);
+  line-height: 1.2;
+  margin-bottom: 0.3rem;
+}
+
+.header-sub {
+  font-size: 14px;
+  color: var(--text-mid);
+  letter-spacing: 0.05em;
+}
+
+.header-deco {
+  position: absolute;
+  right: 0; bottom: 0;
+  width: 220px; height: 100%;
+  pointer-events: none;
+  opacity: 0.18;
+}
+
+.header-accent {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--orange) 0%, var(--orange-light) 60%, transparent 100%);
+}
+
+/* ── 進度條 ── */
+.progress-section {
+  padding: 1.1rem 2rem;
+  background: var(--cream-dark);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.prog-text {
+  font-size: 12px;
+  color: var(--text-mid);
+  white-space: nowrap;
+  min-width: 80px;
+}
+
+.bar-bg {
+  flex: 1;
+  height: 4px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--orange), var(--orange-light));
+  border-radius: 99px;
+  transition: width 0.3s ease;
+  width: 0%;
+}
+
+.reset-btn {
+  font-size: 11px;
+  color: var(--text-light);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 4px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+}
+.reset-btn:hover { background: var(--cream); color: var(--text-mid); }
+.reset-confirm {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--text-mid);
+  white-space: nowrap;
+}
+.reset-confirm.show { display: flex; }
+.confirm-yes {
+  font-size: 11px;
+  color: #fff;
+  background: var(--orange);
+  border: none;
+  border-radius: 5px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+.confirm-no {
+  font-size: 11px;
+  color: var(--text-mid);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+.confirm-no:hover { background: var(--cream); }
+
+/* ── 小叮嚀 ── */
+.tips-section {
+  margin: 1.5rem 1.5rem 0;
+  background: var(--orange-pale);
+  border-left: 3px solid var(--orange);
+  border-radius: 0 8px 8px 0;
+  padding: 1rem 1.25rem;
+}
+
+.tips-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--orange);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 1.5rem;
+}
+
+.tip-item {
+  font-size: 12px;
+  color: var(--text-mid);
+  line-height: 1.7;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.tip-item::before {
+  content: '•';
+  color: var(--orange-light);
+  flex-shrink: 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* ── 清單主體 ── */
+.checklist-body {
+  padding: 1.25rem 1.5rem 3rem;
+}
+
+.section {
+  margin-bottom: 1.25rem;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #fff;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  background: var(--cream-dark);
+  border-bottom: 1px solid var(--border);
+}
+
+.section-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--text-mid);
+  text-transform: uppercase;
+}
+
+.section-count {
+  font-size: 11px;
+  color: var(--text-light);
+}
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 14px;
+  cursor: pointer;
+  border-right: 1px solid #f5efe8;
+  border-bottom: 1px solid #f5efe8;
+  transition: background 0.1s;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.item:hover { background: #fdf9f5; }
+.item:active { background: var(--cream); }
+
+.item.checked { opacity: 0.4; }
+.item.checked .item-label { text-decoration: line-through; }
+
+.checkbox {
+  width: 16px; height: 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 3px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s, border-color 0.15s;
+  background: #fff;
+}
+
+.item.checked .checkbox {
+  background: var(--orange);
+  border-color: var(--orange);
+}
+
+.item.checked .checkbox::after {
+  content: '';
+  display: block;
+  width: 4px; height: 7px;
+  border: 1.5px solid #fff;
+  border-top: none; border-left: none;
+  transform: rotate(42deg) translateY(-1px);
+}
+
+.item-label {
+  font-size: 13px;
+  color: var(--text-dark);
+  line-height: 1.4;
+}
+
+/* ── 頁尾 ── */
+footer {
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-light);
+  padding: 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 480px) {
+  .items { grid-template-columns: 1fr 1fr; }
+  .tips-grid { grid-template-columns: 1fr; }
+  .page-header { padding: 2rem 1.25rem 1.5rem; }
+  .progress-section { padding: 0.9rem 1.25rem; }
+  .checklist-body { padding: 1rem 1rem 3rem; }
+  .tips-section { margin: 1.25rem 1rem 0; }
+  .header-title { font-size: 22px; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <svg class="header-deco" viewBox="0 0 220 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M180 120 Q160 80 200 40" stroke="#D45E1A" stroke-width="1.5" fill="none"/>
+    <path d="M220 100 Q190 60 210 20" stroke="#D45E1A" stroke-width="1" fill="none"/>
+    <path d="M150 120 Q140 90 170 60 Q190 40 210 10" stroke="#D45E1A" stroke-width="0.7" fill="none"/>
+  </svg>
+  <div class="header-eyebrow">115 學年度　國外教育見習</div>
+  <div class="header-title">攜帶物品清單</div>
+  <div class="header-sub">馬來西亞吉隆坡臺灣學校　2026 / 11 / 15–28</div>
+  <div class="header-accent"></div>
+</div>
+
+<div class="progress-section">
+  <span class="prog-text" id="prog-label">0 / 41 已確認</span>
+  <div class="bar-bg"><div class="bar-fill" id="bar"></div></div>
+  <button class="reset-btn" id="reset-btn" onclick="showConfirm()">重置</button>
+  <div class="reset-confirm" id="reset-confirm">
+    確定清空？
+    <button class="confirm-yes" onclick="doReset()">確定</button>
+    <button class="confirm-no" onclick="hideConfirm()">取消</button>
+  </div>
+</div>
+
+<div class="tips-section">
+  <div class="tips-title">
+    <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#D45E1A" stroke-width="1.5"/><line x1="8" y1="7" x2="8" y2="11" stroke="#D45E1A" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="5" r="0.8" fill="#D45E1A"/></svg>
+    出發前小叮嚀
+  </div>
+  <div class="tips-grid">
+    <div class="tip-item">護照有效期限至少 6 個月以上</div>
+    <div class="tip-item">馬來西亞插頭為英式 G 型，記得帶轉接頭</div>
+    <div class="tip-item">液體類物品請裝入夾鏈袋，隨身行李限 100ml</div>
+    <div class="tip-item">當地天氣濕熱，室內冷氣強，外套不可少</div>
+    <div class="tip-item">建議出發前先換少量馬幣（MYR）備用</div>
+    <div class="tip-item">午後常有雷陣雨，輕便雨具建議隨身攜帶</div>
+    <div class="tip-item">教具、教材請於出發前一週確認備妥</div>
+    <div class="tip-item">網卡建議在台灣提前購買，抵馬後即可使用</div>
+  </div>
+</div>
+
+<div class="checklist-body" id="checklist"></div>
+
+<footer>國立高雄師範大學</footer>
+
+<script>
+const data = [
+  { cat: "證件與文件", items: ["護照","護照影本","電子機票","旅遊保險證明","活動手冊","大頭照","健保卡"] },
+  { cat: "教學用品", items: ["教案紙本備份","試教教材","教具","白板筆","板擦","磁鐵","膠帶","紅筆、黑筆、鉛筆","貼紙","計時器","A4 空白紙","學習單備份"] },
+  { cat: "電子設備與配件", items: ["筆電","充電器","手機","充電線","行動電源","轉接頭","網卡","隨身碟","耳機","延長線","相機或手機腳架"] },
+  { cat: "生活日用品", items: ["換洗衣物","毛巾","鞋子","拖鞋","涼鞋","輕便外套","雨傘或輕便雨衣","盥洗用品","美妝用品","保養品","個人藥品","防蚊液","防曬乳","台灣零食伴手禮","少量馬幣現金","環保袋"] },
+  { cat: "其他", items: ["備用眼鏡","隱形眼鏡","夾鏈袋","安全鎖","名片"] }
+];
+
+const STORAGE_KEY = 'nknu_kl_checklist_v1';
+const total = data.reduce((s, g) => s + g.items.length, 0);
+let state = {};
+
+function load() {
+  try { const s = localStorage.getItem(STORAGE_KEY); if (s) state = JSON.parse(s); } catch(e) {}
+}
+function save() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
+}
+function updateProgress() {
+  const checked = Object.values(state).filter(Boolean).length;
+  document.getElementById('prog-label').textContent = `${checked} / ${total} 已確認`;
+  document.getElementById('bar').style.width = (checked / total * 100) + '%';
+  data.forEach(({ cat, items }) => {
+    const done = items.filter(i => state[i]).length;
+    const el = document.getElementById('count-' + cat);
+    if (el) el.textContent = `${done} / ${items.length}`;
+  });
+}
+function showConfirm() {
+  document.getElementById('reset-btn').style.display = 'none';
+  document.getElementById('reset-confirm').classList.add('show');
+}
+function hideConfirm() {
+  document.getElementById('reset-btn').style.display = '';
+  document.getElementById('reset-confirm').classList.remove('show');
+}
+function doReset() {
+  state = {}; save(); updateProgress();
+  document.querySelectorAll('.item').forEach(el => el.classList.remove('checked'));
+  hideConfirm();
+}
+
+load();
+const container = document.getElementById('checklist');
+
+data.forEach(({ cat, items }) => {
+  const sec = document.createElement('div');
+  sec.className = 'section';
+
+  const hdr = document.createElement('div');
+  hdr.className = 'section-header';
+  hdr.innerHTML = `<span class="section-title">${cat}</span><span class="section-count" id="count-${cat}">0 / ${items.length}</span>`;
+  sec.appendChild(hdr);
+
+  const grid = document.createElement('div');
+  grid.className = 'items';
+
+  items.forEach(item => {
+    if (!(item in state)) state[item] = false;
+    const row = document.createElement('div');
+    row.className = 'item' + (state[item] ? ' checked' : '');
+    row.innerHTML = `<div class="checkbox"></div><span class="item-label">${item}</span>`;
+    row.addEventListener('click', () => {
+      state[item] = !state[item];
+      row.classList.toggle('checked', state[item]);
+      save();
+      updateProgress();
+    });
+    grid.appendChild(row);
+  });
+
+  sec.appendChild(grid);
+  container.appendChild(sec);
+});
+
+updateProgress();
+</script>
+</body>
+</html>
